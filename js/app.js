@@ -3,48 +3,12 @@
  * 
  */
 var allcards = document.querySelectorAll('.card');
-
 allcards.forEach(function(card){
     card.addEventListener('click', function(){
        console.log(card);
        card.classList.add('open','show')
    });
 }); 
-// var allcards = document.querySelectorAll('.card');
-// var opencards = documnet.querySelector('.open');
-// // var cardsInArray = [...card]
-// // var matchedcard = document.getElementsByClassName('match')
-
-
-// allcards.forEach(function(card){
-//     card.addEventListener('click', function(){
-//        console.log(card);
-//        card.classList.add('open','show')
-//    });
-// }); 
-// function cardOpen () {
-//     openecards.push(this)
-//     if (openecards.length === 2) {
-//       countMoves()
-//       if (openecards[0].type === openecards[1].type) {
-//         matched()
-//       } else {
-//         unmatched()
-//       }
-//     }
-
-
-// function initGame () {
-//     cardsInArray = shuffle(cardsInArray)
-//     // loop through to remove all exisiting classes from each card
-//     for (var i = 0; i < cardsInArray.length; i++) {
-//       [].forEach.call(cardsInArray, function (item) {
-//         deck.appendChild(item)
-//       })
-//       cardsInArray[i].classList.remove('show', 'open', 'match', 'disabled')
-//     }
-
-
 
 /*
  * Display the cards on the page
