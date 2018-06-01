@@ -4,31 +4,59 @@
  */
 var allcards = document.querySelectorAll('.card');
 var openedcards= [];
+var matchedcards=[];
+var counter=document.querySelector('moves');
+counter=0;
+
 allcards.forEach(function(card){
     card.addEventListener('click', function(){
-       //console.log(card);
+      console.log(card.length);
     if(!card.classList.contains('show') && (!card.classList.contains('open')) && (!card.classList.contains('match'))){
-       openedcards.push(card);
-       //console.log(openedcards);
-       card.classList.add('open','show')
-        
-       if (openedcards.length == 2 ){
-        var firstcard = openedcards[0].querySelector('i').classList.item(1);
-        console.log(firstcard);
-        var secondcard = openedcards[1].querySelector('i').classList.item(1);
-        console.log(secondcard);
+         openedcards.push(card);
+        card.classList.add('open','show')
+        //  for ( let i = 0; i<=allcards.length;i++){
+            if (openedcards.length == 2 ){
+            var firstcard = openedcards[0].querySelector('i').classList.item(1);
+            console.log(firstcard);
+            var secondcard = openedcards[1].querySelector('i').classList.item(1);
+            console.log(secondcard);
             if (firstcard === secondcard){
-                openedcards[0].classList.add('match','open');
-                openedcards[1].classList.add('match','open');
-                console.log('Yah');
+                openedcards[0].classList.add('match','open', 'show');
+                openedcards[1].classList.add('match','open','show');
+                console.log('Success');
+                console.log(openedcards);
+                matchedcards.push(firstcard,secondcard);
+                openedcards=[];
+                // openedcards.push(card);
             }
-                 setTimeout(function(){
+            else {
+                
+                // openedcards=[];
+                console.log('Please Try again');
+                setTimeout(function(){
                 openedcards.forEach(function(card){
-                    card.classList.remove('open','show');   
+                openedcards=[];    
+                card.classList.remove('open','show',);
+                // firstcard.classList.remove('open','show','disabled');
+                // secondcard.classList.remove('open','show','disabled');
                 });
-            }, 1000);
-       } 
-    }
+                }, 300);
+                console.log(openedcards);
+                 clear();
+                function clear() {
+                    var lihtml = document.querySelector('.deck');
+                  return lihtml;  
+
+                }
+            }      
+        }
+        
+     } 
+    
+    // else {
+       
+
+    // }
    });
 }); 
 
