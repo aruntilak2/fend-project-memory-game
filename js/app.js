@@ -3,10 +3,20 @@
  * 
  */
 var allcards = document.querySelectorAll('.card');
+var openedcards= [];
 allcards.forEach(function(card){
     card.addEventListener('click', function(){
-       console.log(card);
+       //console.log(card);
+       openedcards.push(card);
+       //console.log(openedcards);
        card.classList.add('open','show')
+       if (openedcards.length == 2 ){
+                 setTimeout(function(){
+                openedcards.forEach(function(card){
+                    card.classList.remove('open','show');   
+                });
+            }, 1000);
+       } 
    });
 }); 
 
@@ -23,7 +33,7 @@ allcards.forEach(function(card){
 //copied from html div class="restart">
         		// <i class="fa fa-repeat"></i>
                 // </div> 
-    
+    //This restarts the deck
     function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
     while (currentIndex !== 0) {
