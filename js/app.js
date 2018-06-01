@@ -7,16 +7,28 @@ var openedcards= [];
 allcards.forEach(function(card){
     card.addEventListener('click', function(){
        //console.log(card);
+    if(!card.classList.contains('show') && (!card.classList.contains('open')) && (!card.classList.contains('match'))){
        openedcards.push(card);
        //console.log(openedcards);
        card.classList.add('open','show')
+        
        if (openedcards.length == 2 ){
+        var firstcard = openedcards[0].querySelector('i').classList.item(1);
+        console.log(firstcard);
+        var secondcard = openedcards[1].querySelector('i').classList.item(1);
+        console.log(secondcard);
+            if (firstcard === secondcard){
+                openedcards[0].classList.add('match','open');
+                openedcards[1].classList.add('match','open');
+                console.log('Yah');
+            }
                  setTimeout(function(){
                 openedcards.forEach(function(card){
                     card.classList.remove('open','show');   
                 });
             }, 1000);
        } 
+    }
    });
 }); 
 
