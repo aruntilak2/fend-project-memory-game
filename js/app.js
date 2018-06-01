@@ -18,9 +18,14 @@ allcards.forEach(function(card){
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
+
+
+//copied from html div class="restart">
+        		// <i class="fa fa-repeat"></i>
+                // </div> 
+    
     function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -28,10 +33,27 @@ allcards.forEach(function(card){
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
-}
+    }
+    var restart = document.querySelector('.restart');
+    var lihtml = document.querySelector('.deck');
+    var presethtml=lihtml.innerHTML;
+    let cards = document.querySelectorAll('.card');
+    restart.addEventListener('click', function(){
+        shuffle(cards);
+        lihtml.innerHTML = presethtml;     
+        var allcards = document.querySelectorAll('.card');
+        allcards.forEach(function(card){
+        card.addEventListener('click', function(){
+        console.log(card);
+         card.classList.add('open','show')
+       });
+    }); 
 
+});
+
+
+    //var presethtml=lihtml.innerHTML;
 
 /*
  * set up the event listener for a card. If a card is clicked:
