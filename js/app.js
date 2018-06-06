@@ -5,17 +5,21 @@
 var allcards = document.querySelectorAll('.card');
 var openedcards= [];
 var matchedcards=[];
-var counter=document.querySelector('moves');
-counter=0;
-
+//  var counter=document.getElementsByClassName('.moves');
+ var counterhtml = document.querySelector('.moves');
+ counter=0;
+var matches = 0;
 allcards.forEach(function(card){
     card.addEventListener('click', function(){
       console.log(card.length);
+      
     if(!card.classList.contains('show') && (!card.classList.contains('open')) && (!card.classList.contains('match'))){
          openedcards.push(card);
-        card.classList.add('open','show')
+         card.classList.add('open','show')
         //  for ( let i = 0; i<=allcards.length;i++){
             if (openedcards.length == 2 ){
+                counter+=1;
+                counterhtml.innerHTML=counter;
             var firstcard = openedcards[0].querySelector('i').classList.item(1);
             console.log(firstcard);
             var secondcard = openedcards[1].querySelector('i').classList.item(1);
@@ -27,12 +31,25 @@ allcards.forEach(function(card){
                 console.log(openedcards);
                 matchedcards.push(firstcard,secondcard);
                 openedcards=[];
+                matches++;
+                console.log("Maches:" +matches);
+                // alert("Matches: "+matches+", Moves: "+ counter);
                 // openedcards.push(card);
             }
-            else {
-                
+
+
+            else if (card.classList.contains('show') && (card.classList.contains('open')) && (card.classList.contains('match'))){
+                // openedcards.push(card);
+            //    card.classList.add('open','show')
+                alert("Congrats");
+            }
+            else {                
                 // openedcards=[];
                 console.log('Please Try again');
+                // counter+=1;
+                counterhtml.innerHTML=counter;
+                console.log("Maches:"+matches);
+                // alert("Matches: "+matches+", Moves: "+ counter);
                 setTimeout(function(){
                 openedcards.forEach(function(card){
                 openedcards=[];    
@@ -46,19 +63,23 @@ allcards.forEach(function(card){
                 function clear() {
                     var lihtml = document.querySelector('.deck');
                   return lihtml;  
-
                 }
             }      
-        }
-        
+        }  
      } 
-    
-    // else {
-       
-
-    // }
-   });
+    });
 }); 
+
+// To check if all cards are matched
+// allcards.forEach(function(card){
+//     card.addEventListener('click', function(){
+        
+    
+//     }
+
+     
+
+
 
 /*
  * Display the cards on the page
@@ -99,7 +120,6 @@ allcards.forEach(function(card){
          card.classList.add('open','show')
        });
     }); 
-
 });
 
 
