@@ -4,6 +4,25 @@ var matchedcards=[];
 var counterhtml = document.querySelector('.moves');
 counter=0;
 var matches = 0;
+var modalbtn = document.getElementById('modalbttn');
+var modal = document.getElementById('mymodal');
+var closebttn = document.getElementsByClassName('closebttn')[0];
+var modalcontent=document.getElementsByClassName('modal-content')[0];
+var text = document.getElementsByClassName('text')[0];
+//  var modal =document.querySelector('#modal');
+// modalbtn.addEventListener('click', openmodal);
+function openmodal() {
+  modal.style.display="block";
+  var text = document.getElementsByClassName('text')[0];
+//   text.innerHTML="Congrats! You won the game";
+};
+closebttn.addEventListener('click', closemodal);
+function closemodal() {
+  modal.style.display= "none";
+};
+
+
+timer = document.querySelector('.time-display');
 allcards.forEach(function(card){
     card.addEventListener('click', function(){
       console.log(card.length);
@@ -27,10 +46,12 @@ allcards.forEach(function(card){
                 openedcards=[];
                 matches++;
                 console.log("Maches:" +matches);
-                 // alert("GREAT! You Matched: "+matches+" in "+ counter+ "moves");
+                 
                 if (matches === 8 ){
-                    alert('Congrats! You won this game in '+ matches +'moves.');
-                }
+                    openmodal();
+                    text.innerHTML="Congrats! You won the game.You Matched: "+matches+" in "+ counter+ "moves";
+                //    alert("GREAT! You Matched: "+matches+" in "+ counter+ "moves");
+                 }
             }
             else if (card.classList.contains('show') && (card.classList.contains('open')) && (card.classList.contains('match'))){
                 alert("Congrats");
@@ -56,6 +77,7 @@ allcards.forEach(function(card){
      } 
     });
 }); 
+    
 
     function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -73,13 +95,13 @@ allcards.forEach(function(card){
     var presethtml=lihtml.innerHTML;
     let cards = document.querySelectorAll('.card');
     restart.addEventListener('click', function(){
-        shuffle(cards);
+         shuffle(cards);
         lihtml.innerHTML = presethtml;     
         var allcards = document.querySelectorAll('.card');
         allcards.forEach(function(card){
         card.addEventListener('click', function(){
         console.log(card);
          card.classList.add('open','show')
-       });
-    }); 
-});
+        });
+     }); 
+ });
