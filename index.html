@@ -18,19 +18,7 @@
         <header>
             <h1>Matching Game</h1>
         </header>
-               
-       
-      </button>
         <section class="score-panel">
-                <!-- Modal -->
-                
-                <div id="mymodal" class="modal">
-                    <div class = "modal-content">
-                    <span class="closebttn">&times;</span>
-                    <p class="text"> Sample Text </p>
-                    <!-- <button id="modalbttn" class="button"> Want to Play again?</button>  -->
-                    </div>
-                </div>
         	<ul class="stars">
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
@@ -39,12 +27,14 @@
                 <li><i class="fa fa-star"></i></li>
 
         	</ul>
-            <span class="moves">0</span> Moves
+            <span class="moves">Moves: </span>
             <span class="time-display">Time: 00:00</span>
             <div class="restart">
-        		<i class="fa fa-repeat"></i>
+                <i class="fa fa-repeat"></i>
+            <button id = "playagain"> Play Again</button>
         	</div>
         </section>
+        
         <ul class="deck">
             <li class="card">
                 <i class="fa fa-diamond"></i>
@@ -95,6 +85,16 @@
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
+    </div>
+    <!-- Modal -->
+    <div id="mymodal" class="modal">
+        <div class = "modal-content">
+                <span class="closebttn">&times;</span>
+                <p class="text"> Sample Text </p>
+            <!-- <div class="modal footer"> -->
+                <button id="playagain"> Play again!</button>
+            <!-- </div> -->
+        </div>
     </div>
     
 
