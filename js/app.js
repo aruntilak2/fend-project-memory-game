@@ -79,6 +79,37 @@ var starlist= document.querySelectorAll('.fa.fa-star');
                         text.innerHTML="Congratulations! You won the game. You Matched all the "+matches+ " pairs in "+counter+" moves"+" in "+minute+" mins "+second+" secs. Your rating is : "+rating ;
                         timer.innerHTML = "Time: "+minute+" mins "+second+" secs";
                         clearTimeout(interval); 
+                        let ratinground = Math.round(rating);
+                        starlist[0].style.color="black";
+                        starlist[1].style.color="black";
+                        starlist[2].style.color="black";
+                        starlist[3].style.color="black";
+                        starlist[4].style.color="black";
+                     if( rating < 1.99 ){
+                         starlist[0].style.color="red";
+                         }
+                     if( ratinground ===2 ){
+                         starlist[0].style.color="red";
+                         starlist[1].style.color="red";
+                         }
+                     if( ratinground ===3 ){
+                         starlist[0].style.color="red";
+                         starlist[1].style.color="red";
+                         starlist[2].style.color="red";
+                         }
+                     if( ratinground === 4){
+                         starlist[0].style.color="red";
+                         starlist[1].style.color="red";
+                         starlist[2].style.color="red";
+                         starlist[3].style.color="red";
+                         }
+                     if( rating >4.2 ){
+                         starlist[0].style.color="red";
+                         starlist[1].style.color="red";
+                         starlist[2].style.color="red";
+                         starlist[3].style.color="red";
+                         starlist[4].style.color="red";
+                         }  
                     }
                     }              
                 // else if (card.classList.contains('show') && (card.classList.contains('open')) && (card.classList.contains('match'))){
