@@ -3,7 +3,7 @@ var deck = document.querySelector('.deck');
 var openedcards= [];
 var matchedcards=[];
 var counterhtml = document.querySelector('.moves');
-counter=0;
+counter = 0;
 var matches = 0;
 var modalbtn = document.getElementById('modalbttn');
 var modal = document.getElementById('mymodal');
@@ -11,7 +11,9 @@ var closebttn = document.getElementsByClassName('closebttn')[0];
 var modalcontent=document.getElementsByClassName('modal-content')[0];
 var text = document.getElementsByClassName('text')[0];
 var timer = document.querySelector('.time-display');
-   
+var starlist= document.querySelectorAll('.fa.fa-star');
+//array of all the star
+// var starlistarrays= startlist.children;
  deck.addEventListener('click', startTimer, {once: true});
     allcards.forEach(function(card){
         card.addEventListener('click', function(){
@@ -20,13 +22,47 @@ var timer = document.querySelector('.time-display');
         if(!card.classList.contains('show') && (!card.classList.contains('open')) && (!card.classList.contains('match'))){
             openedcards.push(card);
             card.classList.add('open','show')           
-                if (openedcards.length == 2 ){
+            if (openedcards.length == 2){
                     counter+=1;
                     counterhtml.innerHTML="Moves:"+counter;
                 var firstcard = openedcards[0].querySelector('i').classList.item(1);
                 console.log(firstcard);
                 var secondcard = openedcards[1].querySelector('i').classList.item(1);
                 console.log(secondcard);
+                 // Rating    
+                 let rating= matches/(counter*0.2);
+                 rating = rating.toFixed(2);
+                console.log('your rating is :'+rating);
+                 //Rating
+                 let ratinground = Math.round(rating);
+                     if( rating < 1.99 ){
+                         starlist[0].style.color="red";
+                         }
+                     if( ratinground ===2 ){
+                         starlist[0].style.color="red";
+                         starlist[1].style.color="red";
+                         }
+                     if( ratinground ===3 ){
+                         starlist[0].style.color="red";
+                         starlist[1].style.color="red";
+                         starlist[2].style.color="red";
+                         }
+                     if( ratinground === 4){
+                         starlist[0].style.color="red";
+                         starlist[1].style.color="red";
+                         starlist[2].style.color="red";
+                         starlist[3].style.color="red";
+                         }
+                     if( rating >4.2 ){
+                         starlist[0].style.color="red";
+                         starlist[1].style.color="red";
+                         starlist[2].style.color="red";
+                         starlist[3].style.color="red";
+                         starlist[4].style.color="red";
+                         }  
+
+
+                // Check if all matched
                 if (firstcard === secondcard){
                     openedcards[0].classList.add('match','open', 'show');
                     openedcards[1].classList.add('match','open','show');
@@ -36,25 +72,29 @@ var timer = document.querySelector('.time-display');
                     openedcards=[];
                     matches++;
                     console.log("Maches:" +matches);
+                    console.log('your rating is :'+rating);
+                    // Won
                     if (matches === 8 ){
                         openmodal();
-                        text.innerHTML="Congratulations! You won the game. You Matched all the "+matches+ " pairs in "+counter+" moves"+" in "+minute+" mins "+second+" secs";;
+                        text.innerHTML="Congratulations! You won the game. You Matched all the "+matches+ " pairs in "+counter+" moves"+" in "+minute+" mins "+second+" secs. Your rating is : "+rating ;
                         timer.innerHTML = "Time: "+minute+" mins "+second+" secs";
-                        clearTimeout(interval);                   
+                        clearTimeout(interval); 
                     }
-                }
+                    }              
                 // else if (card.classList.contains('show') && (card.classList.contains('open')) && (card.classList.contains('match'))){
                 //     alert("Congratulations");
                 // }
+                //Keep checking untill all match!
                 else {                
                     console.log('Please Try again');
+                    console.log('your rating is :'+rating);
                     counterhtml.innerHTML="Moves: "+counter;
                     console.log("Maches:"+matches);
                     setTimeout(function(){
-                    openedcards.forEach(function(card){
-                    openedcards=[];    
-                    card.classList.remove('open','show',);
-                    });
+                        openedcards.forEach(function(card){
+                        openedcards=[];    
+                        card.classList.remove('open','show',);
+                        });
                     }, 300);
                     console.log(openedcards);
                     clear();
@@ -67,6 +107,7 @@ var timer = document.querySelector('.time-display');
         } 
         });
     }); 
+    //TO open modal
     function openmodal() {
         modal.style.display="block";
         var text = document.getElementsByClassName('text')[0];
@@ -75,8 +116,6 @@ var timer = document.querySelector('.time-display');
         function closemodal() {
         modal.style.display= "none";
     };
-
-
     function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
     while (currentIndex !== 0) {
@@ -114,8 +153,8 @@ var timer = document.querySelector('.time-display');
     moves=0;
      counter=0;
    //  console.log("working");
-      ;  
  }
+ //Timer function
 let second = 0, minute = 0;
 let interval;
 function startTimer(){

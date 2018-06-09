@@ -152,7 +152,7 @@ Modal */
     background-color: rgba(0,0,0,0.1)    
   }
   .modal-content{
-    background-color: #3777ccc7;
+    background-color: rgba(56, 120, 203, 0.78);
     margin: 10% auto;
     padding: 10px 20px;
     width: 70%;
