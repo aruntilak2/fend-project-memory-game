@@ -12,6 +12,8 @@ var modalcontent=document.getElementsByClassName('modal-content')[0];
 var text = document.getElementsByClassName('text')[0];
 var timer = document.querySelector('.time-display');
 var starlist= document.querySelectorAll('.fa.fa-star');
+// var staricons= document.querySelectorAll('.i.fa.fa-star');
+// var allstars = document.querySelectorAll('stars');
 //array of all the star
 // var starlistarrays= startlist.children;
  deck.addEventListener('click', startTimer, {once: true});
@@ -60,8 +62,6 @@ var starlist= document.querySelectorAll('.fa.fa-star');
                          starlist[3].style.color="red";
                          starlist[4].style.color="red";
                          }  
-
-
                 // Check if all matched
                 if (firstcard === secondcard){
                     openedcards[0].classList.add('match','open', 'show');
@@ -76,7 +76,7 @@ var starlist= document.querySelectorAll('.fa.fa-star');
                     // Won
                     if (matches === 8 ){
                         openmodal();
-                        text.innerHTML="Congratulations! You won the game. You Matched all the "+matches+ " pairs in "+counter+" moves"+" in "+minute+" mins "+second+" secs. Your rating is : "+rating ;
+                        
                         timer.innerHTML = "Time: "+minute+" mins "+second+" secs";
                         clearTimeout(interval); 
                         let ratinground = Math.round(rating);
@@ -110,6 +110,13 @@ var starlist= document.querySelectorAll('.fa.fa-star');
                          starlist[3].style.color="red";
                          starlist[4].style.color="red";
                          }  
+                         text.innerHTML="Congratulations! You won the game. You Matched all the "+matches+ " pairs in "+counter+" moves"+" in "
+                                        +minute+" mins "+second+" secs. Your star rating is : "+rating+"  " 
+                                        + starlist[0].outerHTML
+                                        + starlist[1].outerHTML 
+                                        + starlist[2].outerHTML
+                                        + starlist[3].outerHTML
+                                        + starlist[4].outerHTML;
                     }
                     }              
                 // else if (card.classList.contains('show') && (card.classList.contains('open')) && (card.classList.contains('match'))){
