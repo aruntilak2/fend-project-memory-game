@@ -12,10 +12,11 @@ var modalcontent=document.getElementsByClassName('modal-content')[0];
 var text = document.getElementsByClassName('text')[0];
 var timer = document.querySelector('.time-display');
 var starlist= document.querySelectorAll('.fa.fa-star');
-// var staricons= document.querySelectorAll('.i.fa.fa-star');
-// var allstars = document.querySelectorAll('stars');
-//array of all the star
-// var starlistarrays= startlist.children;
+starlist[0].style.color="red";
+starlist[1].style.color="red";
+starlist[2].style.color="red";
+starlist[3].style.color="red";
+starlist[4].style.color="red";
  deck.addEventListener('click', startTimer, {once: true});
     allcards.forEach(function(card){
         card.addEventListener('click', function(){
@@ -26,6 +27,24 @@ var starlist= document.querySelectorAll('.fa.fa-star');
             card.classList.add('open','show')           
             if (openedcards.length == 2){
                     counter+=1;
+                    if (counter>1 && counter<10){
+                        starlist[4].style.color="black";
+                    }
+                    if (counter>10 && counter<20){
+                        starlist[4].style.color="black";
+                        starlist[3].style.color="black";                        
+                    }
+                    if (counter>20 && counter<30){
+                        starlist[4].style.color="black";
+                        starlist[3].style.color="black";
+                        starlist[2].style.color="black";
+                    }
+                    if (counter>30 && counter<40){
+                        starlist[4].style.color="black";
+                        starlist[3].style.color="black";
+                        starlist[2].style.color="black";
+                        starlist[1].style.color="black";
+                    }
                     counterhtml.innerHTML="Moves:"+counter;
                 var firstcard = openedcards[0].querySelector('i').classList.item(1);
                 console.log(firstcard);
@@ -62,6 +81,14 @@ var starlist= document.querySelectorAll('.fa.fa-star');
                          starlist[3].style.color="red";
                          starlist[4].style.color="red";
                          }  
+                    if (counter === matches){
+                         starlist[0].style.color="red";
+                         starlist[1].style.color="red";
+                         starlist[2].style.color="red";
+                         starlist[3].style.color="red";
+                         starlist[4].style.color="red";
+                         }  
+                    // }
                 // Check if all matched
                 if (firstcard === secondcard){
                     openedcards[0].classList.add('match','open', 'show');
@@ -76,7 +103,6 @@ var starlist= document.querySelectorAll('.fa.fa-star');
                     // Won
                     if (matches === 8 ){
                         openmodal();
-                        
                         timer.innerHTML = "Time: "+minute+" mins "+second+" secs";
                         clearTimeout(interval); 
                         let ratinground = Math.round(rating);
@@ -110,6 +136,13 @@ var starlist= document.querySelectorAll('.fa.fa-star');
                          starlist[3].style.color="red";
                          starlist[4].style.color="red";
                          }  
+                    if (counter === matches){
+                    starlist[0].style.color="red";
+                        starlist[1].style.color="red";
+                        starlist[2].style.color="red";
+                        starlist[3].style.color="red";
+                        starlist[4].style.color="red";
+                        }  
                          text.innerHTML="Congratulations! You won the game. You Matched all the "+matches+ " pairs in "+counter+" moves"+" in "
                                         +minute+" mins "+second+" secs. Your star rating is : "+rating+"  " 
                                         + starlist[0].outerHTML
@@ -118,7 +151,7 @@ var starlist= document.querySelectorAll('.fa.fa-star');
                                         + starlist[3].outerHTML
                                         + starlist[4].outerHTML;
                     }
-                    }              
+                }
                 // else if (card.classList.contains('show') && (card.classList.contains('open')) && (card.classList.contains('match'))){
                 //     alert("Congratulations");
                 // }
