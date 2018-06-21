@@ -41,6 +41,7 @@ h1 {
  * Styles for the deck of cards
  */
 .deck {
+    
      width: 660px; 
     /* width: 100%; */
     min-height: 680px;
@@ -165,4 +166,12 @@ Modal */
   .closebttn:hover, .closebttn:focus {   
     color:red;
     cursor: pointer;
+  }
+
+  .footer {
+    background-color: rgba(56, 120, 203, 0.78);
+    margin: 10% auto;
+    padding: 25px 25px;
+    width: 50%;
+    color: white;    
   }
